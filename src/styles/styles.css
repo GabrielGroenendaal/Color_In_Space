@@ -1,0 +1,11 @@
+
+html {
+      background:  #00001a;
+}
+
+body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
