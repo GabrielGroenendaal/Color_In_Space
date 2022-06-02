@@ -10,3 +10,26 @@ body {
 }
 
 
+.options {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+}
+
+#sound {
+      margin-left: 20px;
+      height: 30px;
+      width: 40px;
+      border: 2px solid white;
+      border-radius: 10px;
+      display: flex;
+      color: white;
+      background: gray;
+      align-items: center;
+      justify-content: center;
+}
+
+#sound:hover {
+      background: rgb(21, 98, 123);
+}

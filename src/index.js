@@ -8,7 +8,7 @@ setInterval(function () { window.count++ }, 10);
 document.addEventListener("DOMContentLoaded", () => {
       document.getElementById('start-button').classList.replace('hidden', 'visible');
       document.getElementById('title').classList.replace('hidden', 'visible');
-
+      document.getElementById('sound').classList.replace('hidden', 'visible');
       const canvasEl = document.getElementById("game-canvas");
       canvasEl.width = window.innerWidth;
       canvasEl.height = window.innerHeight - window.board_offset;
@@ -21,10 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (event.currentTarget.classList.contains('visible')) {
                   document.getElementById("start-button").classList.replace('visible', 'hidden');
                   document.getElementById("title").classList.replace('visible', 'hidden');
+                  document.getElementById("sound").classList.replace('visible', 'hidden');
 
                   //document.getElementById("start-button").classList.add('hidden');
                   let univ = new Universe(ctx);
-                  document.getElementById("audiotag1").play()
+                  //document.getElementById("audiotag1").play()
             }
       })
       
@@ -34,4 +35,11 @@ window.addEventListener('resize', () => {
       const canvasEl = document.getElementById("game-canvas");
       canvasEl.width = window.innerWidth;
       canvasEl.height = window.innerHeight  - window.board_offset;
+})
+
+document.getElementById('sound-button').addEventListener('click', function (event) {
+      let sound = document.getElementById("audiotag1");
+      sound.pause();
+      sound.currentTime = 0;
+      sound.src = sound.src;
 })
