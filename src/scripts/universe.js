@@ -58,7 +58,7 @@ export class Universe {
                   pos: start,
                   height: canvasEl.height * 2,
                   width: canvasEl.width * 2,
-                  num_planets: (Math.random() * 10 + 10),
+                  num_planets: (Math.random() * 5 + 15),
                   num_suns: (Math.random() * 5 + 5)
             });
       }

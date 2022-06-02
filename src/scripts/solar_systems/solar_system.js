@@ -28,7 +28,7 @@ export class SolarSystem {
             this.explosion_trails = [];
             this.comet_trails = [];
             this.addPlanets([.1,.25]);
-            setInterval(this.checkPlanets.bind(this), 15000);
+            setInterval(this.checkPlanets.bind(this), 10000);
       }
 
 

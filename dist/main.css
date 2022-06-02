@@ -12,6 +12,7 @@ body {
 
 
 
+
 #start-button {
       display: flex;
       background: gray;
@@ -21,8 +22,8 @@ body {
       border-radius: 25px;
       border: 2px solid white;
       font-size: 50px;
-      height: 100px;
       width: 200px;
+      height: 100px;
       position: absolute;
       text-align: center;
       justify-content: center;
@@ -37,7 +38,7 @@ body {
         /* Fade-In Effect */
         .visible {
             visibility: visible;
-            opacity: .5;
+            opacity: .7;
             transition: opacity 2s linear;
         }
         /* Fade-Out Effect */
@@ -47,7 +48,16 @@ body {
             transition: visibility 0s 1s, opacity 1s linear;
         }
 
-
+#title {
+ 
+    font-size: 64px;
+    color: white;
+    position: absolute;
+    top: 100px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
 
 
 /*# sourceMappingURL=main.css.map*/
