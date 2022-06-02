@@ -1,12 +1,13 @@
 import { SolarSystemBody } from "./solar_systems/solar_system_body";
 import { Trail } from "./solar_systems/trail";
+import { CometTrail } from "./solar_systems/trail";
 import { Util } from "./utilities/util";
 import { Planet } from "./solar_systems/planet";
 
 export class Comet extends SolarSystemBody {
       constructor(options) {
             // Setting variables
-            options.radius = 15;
+            options.base_radius = 15;
             options.color = { red: 255, green: 255, blue: 255, alpha: 0 };
             options.color_v = options.color_v || [0, 0, 0];
             options.vel = options.vel || [0, 0];
@@ -18,6 +19,8 @@ export class Comet extends SolarSystemBody {
             // Game Logic
             this.isOrbittable = false;
             this.powerUp = false;
+            this.growth = options.growth || (Math.random() * .4 + .2);
+            this.radius =  this.base_radius / 100; 
             //this.bindKeyHandlers();
             
             // Trail color logic
@@ -37,7 +40,7 @@ export class Comet extends SolarSystemBody {
       draw(ctx) {
             this.adjust_color();
             this.addTrail();
-            super.draw(ctx);
+            super.draw(ctx, this);
       }
 
       move() {
@@ -56,13 +59,14 @@ export class Comet extends SolarSystemBody {
             new_pos[0] = Math.cos(new_angle) * this.radius / 150;
             new_pos[1] = Math.sin(new_angle) * this.radius / 150;
 
-            this.solar_system.add(new Trail({
+            this.solar_system.add(new CometTrail({
                   pos: this.pos,
                   solar_system: this.solar_system,
                   size: 10,
                   color: JSON.parse(JSON.stringify(this.trail_color)),
-                  vel: new_pos,//Util.scale(this.vel, -.1)
+                  //    vel: new_pos,//Util.scale(this.vel, -.1)
                   shrink: .03,
+                  //spread: 5
             }));
 
 
@@ -73,17 +77,12 @@ export class Comet extends SolarSystemBody {
             this.solar_system.add(new Trail({
                   pos: this.pos,
                   solar_system: this.solar_system,
-                  size: 10,
+                  size: 8,
                   color: JSON.parse(JSON.stringify(this.trail_color)),
                   vel: new_pos,//Util.scale(this.vel, -.1)
                   //shrink: .05
             }));
 
-            // this.solar_system.add(new Trail({
-            //       pos: new_pos,
-            //       solar_system: this.solar_system,
-            //       size: 3
-            // }))
       }
 
       color_changes = [
@@ -98,7 +97,6 @@ export class Comet extends SolarSystemBody {
       num_of_giblets = 3;
 
       set_adjusted_color() {
-            console.log(this.altered_color);
             let old = this.altered_color;
             while (this.altered_color === old) {
                   this.altered_color = Util.get_random(this.color_changes);
@@ -139,7 +137,6 @@ export class Comet extends SolarSystemBody {
       }
 
       collideWith(otherObj) {
-            console.log("check")
             if (otherObj instanceof Planet) {
                   otherObj.explode();
             }

@@ -65,6 +65,19 @@ export const Util = {
 
       get_random (list) {
             return list[Math.floor((Math.random()*list.length))];
+      },
+
+      canvasEL() {
+            return document.getElementById("game-canvas");
+      },
+      cameraX(comet) {
+            let canvasEl = document.getElementById("game-canvas");
+            return -(canvasEl.width / 2 - comet.pos[0]) + (comet.vel[0] * 15);
+      },
+
+      cameraY(comet) {
+            let canvasEl = document.getElementById("game-canvas");
+            return -(canvasEl.height / 2 - comet.pos[1]) + (comet.vel[1] * 15);
       }
           
 }

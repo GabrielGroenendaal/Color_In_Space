@@ -16,22 +16,23 @@ export class Trail {
             this.size = options.size || 10; 
             this.shrink = options.shrink || .02;
             this.pos = options.pos;
-            this.vel = options.vel;
+            this.vel = options.vel || [0,0];
             this.solar_system = options.solar_system;
             this.altered_color = Util.get_random(this.color_changes);
             this.drag = options.drag || .995;
             this.variance = Math.random();
+            //this.spread = options.spread || 0;
             //setInterval(this.set_adjusted_color(), 4000);
       }
 
       
-      draw(ctx) {
+      draw(ctx, comet) {
             ctx.fillStyle = Util.parseColor(this.color);
             ctx.beginPath();
 
             ctx.arc(
-                  this.pos[0],
-                  this.pos[1],
+                  this.pos[0] - Util.cameraX(comet),
+                  this.pos[1] - Util.cameraY(comet),
                   this.size,
                   0,
                   2 * Math.PI,
@@ -105,8 +106,33 @@ export class Trail {
 
 }
 
-export class ExplosionTrail extends Trail{
+export class ExplosionTrail extends Trail {
       constructor(options) {
             super(options);
       }
 }
+
+export class CometTrail extends Trail {
+      constructor(options) {
+            super(options);
+      }
+}
+      // draw(ctx, comet) {
+      //       super.draw(ctx, comet);
+      //       if (this.size > 0.01) {
+      //             let new_angle = Util.randomAngle();
+      //             let new_pos = [0, 0];
+      //             new_pos[0] = Math.cos(new_angle) * this.size / 15;
+      //             new_pos[1] = Math.sin(new_angle) * this.size / 15;
+      //             this.solar_system.add(new ExplosionTrail({
+      //                   pos: this.pos,
+      //                   solar_system: this.solar_system,
+      //                   size: this.size * Math.random() * .5 + .5,
+      //                   color: this.color,
+      //                   vel: new_pos * 2,
+      //                   //spread: this.spread - 1,
+      //                   shrink: .1
+      //             }));
+      //       }
+
+      // }

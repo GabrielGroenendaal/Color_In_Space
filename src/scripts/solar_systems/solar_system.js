@@ -8,12 +8,14 @@ import { Asteroid } from "./asteroid";
 import { Trail } from "./trail";
 import { ExplosionTrail } from "./trail";
 import { Star } from "./star";
+import { CometTrail } from "./trail";
 
 export class SolarSystem {
 
       constructor(options) {
-            this.height = window.innerHeight - window.board_offset ;
-            this.width = window.innerWidth;
+            this.pos = options.pos || [0, 0];
+            this.height = options.height || window.innerHeight - window.board_offset ;
+            this.width = options.width || window.innerWidth;
             this.num_planets = options.num_planets || 8;
             this.num_suns = options.sun || 3;
             this.universe = options.universe;
@@ -24,22 +26,37 @@ export class SolarSystem {
             this.stars = [];
             this.trails = [];
             this.explosion_trails = [];
-            this.addPlanets();
+            this.comet_trails = [];
+            this.addPlanets([.1,.25]);
+            setInterval(this.checkPlanets.bind(this), 15000);
       }
 
 
-      addPlanets() {
+      checkPlanets() {
+            if ([...this.planets, ...this.suns, ...this.asteroids].length < this.num_planets + this.num_suns) {
+                  this.addPlanets([0.06,0.1]);
+            }
+      }
+
+      addPlanets(range) {
             while (this.planets.length < this.num_planets) {
+                  let planet_pos = Util.randomPos(100, this.width - 100, 100, this.height - 100)
                   let new_planet = new Planet({
                         solar_system: this,
-                        pos: Util.randomPos(100, this.width - 100, 100, this.height - 100),
-                        vel: Util.randomVec(.1)
+                        pos: [this.pos[0] + planet_pos[0], this.pos[1] + planet_pos[1]],
+                        vel: Util.randomVec(.5),
+                        growth: (Math.random() * (range[1] - range[0]) + range[0])
                   });
                   this.add(new_planet);
             }
             while (this.suns.length < this.num_suns) {
+                  let planet_pos = Util.randomPos(100, this.width - 100, 100, this.height - 100)
+
                   let new_sun = new Sun({
-                        solar_system: this
+                        solar_system: this,
+                        pos: [this.pos[0] + planet_pos[0], this.pos[1] + planet_pos[1]],
+                        vel: Util.randomVec(.3),
+                        growth: (Math.random() * (range[1] - range[0]) + range[0])
                   });
                   this.add(new_sun);
             }
@@ -50,7 +67,7 @@ export class SolarSystem {
       }
 
       allGraphics() {
-            return [...this.trails, ...this.stars, ...this.explosion_trails]
+            return [...this.trails, ...this.stars, ...this.explosion_trails, ...this.comet_trails]
       }
 
       add(obj) {
@@ -60,11 +77,14 @@ export class SolarSystem {
             if (obj instanceof Sun) {
                   this.suns.push(obj);
             }
-            if (obj instanceof Trail && !(obj instanceof ExplosionTrail)) {
-                  this.trails.push(obj);
+            if (obj instanceof Trail && !(obj instanceof CometTrail) && !(obj instanceof ExplosionTrail)) {
+                  this.trails.unshift(obj);
             }
             if (obj instanceof ExplosionTrail) {
-                  this.explosion_trails.push(obj);
+                  this.explosion_trails.unshift(obj);
+            }
+            if (obj instanceof CometTrail) {
+                  this.comet_trails.unshift(obj)
             }
             if (obj instanceof Star) {
                   this.stars.push(obj);
@@ -75,16 +95,19 @@ export class SolarSystem {
       }
 
       draw(ctx) {
-            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight - window.board_offset );
-            ctx.fillStyle = "black";
-            ctx.fillRect(0, 0, window.innerWidth, window.innerHeight - window.board_offset );
+            
+            //ctx.clearRect(0, 0, window.innerWidth, window.innerHeight - window.board_offset);
+            // ctx.clearRect(this.comet.pos[0] - (window.innerWidth/2), this.comet.pos[1] - (window.innerHeight/2), window.innerWidth, window.innerHeight)
+
+            // ctx.fillStyle = "black";
+            // ctx.fillRect(this.comet.pos[0] - (window.innerWidth/2), this.comet.pos[1] - (window.innerHeight/2), window.innerWidth, window.innerHeight);
             let bodies = this.allBodies();
             for (let index = 0; index < bodies.length; index++) {
-                  bodies[index].draw(ctx);
+                  bodies[index].draw(ctx, this.comet);
             };
             let graphics = this.allGraphics();
             for (let index = 0; index < graphics.length; index++) {
-                  graphics[index].draw(ctx);
+                  graphics[index].draw(ctx, this.comet);
                   graphics[index].adjust();
                   //graphics[index].shrink();
             };
@@ -111,10 +134,7 @@ export class SolarSystem {
             }
       }
 
-      checkTrail() {
-            console.log(this.trails);
-            console.log(this.explosion_trails)
-      }
+  
       step() {
             this.moveObjects();
             this.checkCollision();
@@ -124,16 +144,20 @@ export class SolarSystem {
             if (obj instanceof Asteroid) {
                   this.asteroids.splice(this.asteroids.indexOf(obj), 1);
             }
-            if (obj instanceof Sun){
+            if (obj instanceof Sun) {
+                  obj.explode();
                   this.suns.splice(this.suns.indexOf(obj), 1);
             }
-            if (obj instanceof Trail && !(obj instanceof ExplosionTrail)){
+            if (obj instanceof Trail && !(obj instanceof CometTrail) && !(obj instanceof ExplosionTrail)){
                   //this.checkTrail();
                   this.trails.splice(this.trails.indexOf(obj), 1)
             }
             if (obj instanceof ExplosionTrail){
                   //this.checkTrail();
                   this.explosion_trails.splice(this.explosion_trails.indexOf(obj), 1)
+            }
+            if (obj instanceof CometTrail) {
+                  this.comet_trails.splice(this.comet_trails.indexOf(obj), 1)
             }
             if (obj instanceof Star){
                   this.stars.splice(this.stars.indexOf(obj), 1)
