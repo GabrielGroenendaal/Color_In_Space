@@ -19,24 +19,21 @@ body {
 
 #sound {
       margin-left: 20px;
-      height: 30px;
-      width: 40px;
+      height: auto;
+      width: 60px;
       border: 2px solid white;
       border-radius: 10px;
       display: flex;
       color: white;
-      background: gray;
+      background: rgb(11, 55, 82);
       align-items: center;
       justify-content: center;
+      font-weight: bold;
+      padding: 5px 5px;
 }
 
 #sound:hover {
       background: rgb(21, 98, 123);
-}
-
-#icon {
-      width: 20px;
-      height: auto;
 }
 
 .options {
