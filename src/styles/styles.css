@@ -33,3 +33,13 @@ body {
 #sound:hover {
       background: rgb(21, 98, 123);
 }
+
+#icon {
+      width: 20px;
+      height: auto;
+}
+
+.options {
+      padding-top: 20px;
+      margin-top: 40px;
+}
