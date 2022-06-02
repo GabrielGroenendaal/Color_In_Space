@@ -22,10 +22,26 @@ document.addEventListener("DOMContentLoaded", () => {
                   document.getElementById("start-button").classList.replace('visible', 'hidden');
                   document.getElementById("title").classList.replace('visible', 'hidden');
                   document.getElementById("sound").classList.replace('visible', 'hidden');
+                  setTimeout(function () {
+                        
+                        document.getElementById('sound').classList.add('anchor');
+                        document.getElementById('sound').classList.replace('hidden', 'visible');
+                  }, 1000);
 
                   //document.getElementById("start-button").classList.add('hidden');
                   let univ = new Universe(ctx);
                   //document.getElementById("audiotag1").play()
+            }
+      });
+
+      document.getElementById('sound').addEventListener('click', function (event) {
+            let sound = document.getElementById("audiotag1");
+            if (sound.paused) {
+                  sound.play()
+            } else {
+                  sound.pause();
+                  sound.currentTime = 0;
+                  sound.src = sound.src;
             }
       })
       
@@ -37,9 +53,3 @@ window.addEventListener('resize', () => {
       canvasEl.height = window.innerHeight  - window.board_offset;
 })
 
-document.getElementById('sound-button').addEventListener('click', function (event) {
-      let sound = document.getElementById("audiotag1");
-      sound.pause();
-      sound.currentTime = 0;
-      sound.src = sound.src;
-})

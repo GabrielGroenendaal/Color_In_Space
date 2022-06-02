@@ -2,7 +2,7 @@
 #start-button {
       display: flex;
       background: gray;
-     
+
       color: white;
       font-weight: bold;
       border-radius: 25px;
@@ -34,12 +34,12 @@
         }
 
 #title {
- 
+    position: absolute;
     font-size: 64px;
     color: white;
-    position: absolute;
     top: 100px;
     justify-content: center;
     align-items: center;
     display: flex;
+    
 }

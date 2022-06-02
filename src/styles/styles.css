@@ -25,11 +25,12 @@ body {
       border-radius: 10px;
       display: flex;
       color: white;
-      background: rgb(11, 55, 82);
+      background: rgb(112, 140, 157);
       align-items: center;
       justify-content: center;
       font-weight: bold;
       padding: 5px 5px;
+     
 }
 
 #sound:hover {
@@ -39,4 +40,10 @@ body {
 .options {
       padding-top: 20px;
       margin-top: 40px;
+}
+
+.anchor {
+      position: fixed;
+      top: 20px;
+      right: 20px;
 }

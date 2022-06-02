@@ -26,11 +26,12 @@ body {
       border-radius: 10px;
       display: flex;
       color: white;
-      background: rgb(11, 55, 82);
+      background: rgb(112, 140, 157);
       align-items: center;
       justify-content: center;
       font-weight: bold;
       padding: 5px 5px;
+     
 }
 
 #sound:hover {
@@ -42,10 +43,16 @@ body {
       margin-top: 40px;
 }
 
+.anchor {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+}
+
 #start-button {
       display: flex;
       background: gray;
-     
+
       color: white;
       font-weight: bold;
       border-radius: 25px;
@@ -77,14 +84,14 @@ body {
         }
 
 #title {
- 
+    position: absolute;
     font-size: 64px;
     color: white;
-    position: absolute;
     top: 100px;
     justify-content: center;
     align-items: center;
     display: flex;
+    
 }
 
 
