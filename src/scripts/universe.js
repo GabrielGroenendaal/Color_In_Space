@@ -29,7 +29,6 @@ export class Universe {
                   a.draw();
                   a.comet.bindKeyHandlers();
                   a.checkComet();
-                  console.log(a.solar_system.allBodies().concat(a.solar_system.allGraphics()));
                   //console.log(a.solar_system.planets);
             }, 10)
       }
@@ -74,7 +73,6 @@ export class Universe {
                   this.solar_system.pos[1] + (this.solar_system.height * 1.3)
             ]
             if (this.comet.pos[0] > valid_x[1]|| this.comet.pos[0] < valid_x[0]|| this.comet.pos[1] > valid_y[1] || this.comet.pos[1] < valid_y[0]) {
-                  console.log("apple")
                   let storage = this.solar_system;
                   let new_univ_pos = [
                         this.comet.pos[0] - window.innerWidth / 2 + (this.comet.vel[0] * 100),
