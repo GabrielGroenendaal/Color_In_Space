@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById('start-button').classList.replace('hidden', 'visible');
       document.getElementById('title').classList.replace('hidden', 'visible');
       document.getElementById('sound').classList.replace('hidden', 'visible');
+      document.getElementById("instructions").classList.replace('hidden', 'visible');
+
       const canvasEl = document.getElementById("game-canvas");
       canvasEl.width = window.innerWidth;
       canvasEl.height = window.innerHeight - window.board_offset;
@@ -22,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
                   document.getElementById("start-button").classList.replace('visible', 'hidden');
                   document.getElementById("title").classList.replace('visible', 'hidden');
                   document.getElementById("sound").classList.replace('visible', 'hidden');
+                  document.getElementById("instructions").classList.replace('visible', 'hidden');
+
                   setTimeout(function () {
                         
                         document.getElementById('sound').classList.add('anchor');

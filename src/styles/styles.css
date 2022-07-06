@@ -7,6 +7,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
 }
 
 
@@ -37,10 +38,6 @@ body {
       background: rgb(21, 98, 123);
 }
 
-.options {
-      padding-top: 20px;
-      margin-top: 40px;
-}
 
 .anchor {
       position: fixed;

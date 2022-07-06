@@ -70,18 +70,18 @@ export class Comet extends SolarSystemBody {
             }));
 
 
-            new_angle = Util.randomAngle();
-            new_pos[0] = Math.cos(new_angle) * this.radius / 150;
-            new_pos[1] = Math.sin(new_angle) * this.radius / 150;
+            // new_angle = Util.randomAngle();
+            // new_pos[0] = Math.cos(new_angle) * this.radius / 150;
+            // new_pos[1] = Math.sin(new_angle) * this.radius / 150;
 
-            this.solar_system.add(new Trail({
-                  pos: this.pos,
-                  solar_system: this.solar_system,
-                  size: 8,
-                  color: JSON.parse(JSON.stringify(this.trail_color)),
-                  vel: new_pos,//Util.scale(this.vel, -.1)
-                  //shrink: .05
-            }));
+            // this.solar_system.add(new Trail({
+            //       pos: this.pos,
+            //       solar_system: this.solar_system,
+            //       size: 8,
+            //       color: JSON.parse(JSON.stringify(this.trail_color)),
+            //       vel: new_pos,//Util.scale(this.vel, -.1)
+            //       //shrink: .05
+            // }));
 
       }
 

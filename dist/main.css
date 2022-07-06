@@ -1,4 +1,10 @@
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/reset.css ***!
+  \****************************************************************************************************/
 
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/styles.css ***!
+  \*****************************************************************************************************/
 
 html {
       background:  #00001a;
@@ -8,6 +14,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
 }
 
 
@@ -38,16 +45,15 @@ body {
       background: rgb(21, 98, 123);
 }
 
-.options {
-      padding-top: 20px;
-      margin-top: 40px;
-}
 
 .anchor {
       position: fixed;
       top: 20px;
       right: 20px;
 }
+/*!***********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/start-button.css ***!
+  \***********************************************************************************************************/
 
 #start-button {
       display: flex;
@@ -94,5 +100,28 @@ body {
     
 }
 
+.instructions {
+    position: absolute;
+    top: 60%;
+    align-items: center;
+}
 
-/*# sourceMappingURL=main.css.map*/
+#instructions {
+    display: flex;
+
+    color: white;
+
+
+    padding: 10px 10px;
+    font-size: 50px;
+    width: 600px;
+    height: 200px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+}
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+

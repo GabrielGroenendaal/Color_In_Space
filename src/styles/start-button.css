@@ -43,3 +43,25 @@
     display: flex;
     
 }
+
+.instructions {
+    position: absolute;
+    top: 60%;
+    align-items: center;
+}
+
+#instructions {
+    display: flex;
+
+    color: white;
+
+
+    padding: 10px 10px;
+    font-size: 50px;
+    width: 600px;
+    height: 200px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+}
