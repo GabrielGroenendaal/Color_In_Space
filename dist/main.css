@@ -44,7 +44,7 @@ body {
 #sound {
     font-size: 1.5em;
     height: auto;
-    width: 2%;
+    width: auto;
     border: 2px solid white;
     border-radius: 10px;
     display: flex;
@@ -54,7 +54,11 @@ body {
     justify-content: center;
     font-weight: bold;
     padding: 8px;
-   
+    position: fixed;
+    top: 2%;
+    right: 1%;
+    opacity: 60%;
+    
 }
 
 #sound:hover {
@@ -64,14 +68,9 @@ body {
     /* transition: transform .3s;
     transition: color .4s; */
     transition: all .4s;
+    opacity: 100%;
 }
 
-
-.anchor {
-    position: fixed;
-    top: 2%;
-    right: 1%;
-}
 
 
 #start-button {
@@ -133,6 +132,7 @@ body {
     display: flex;
     
     width: 100%;
+    opacity: 100%;
 }
 
 
@@ -200,6 +200,8 @@ svg {
     width: 100%;
     height: 300px;
     margin: 0 auto;
+    opacity: 100%;
+
 }
 
 .text-copy {
@@ -244,6 +246,8 @@ svg {
 #title {
     transition: transform 1s;
     margin-bottom: 1%;
+    opacity: 100%;
+
 }
 #title:hover {
     transform: scale(1.1);

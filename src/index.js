@@ -35,14 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                   document.getElementById("start-button").classList.replace('visible', 'hidden');
                   document.getElementById("title-graphic").classList.replace('visible', 'hidden');
-                  document.getElementById("sound").classList.replace('visible', 'hidden');
+                  //document.getElementById("sound").classList.replace('visible', 'hidden');
                   document.getElementById("instructions").classList.replace('visible', 'hidden');
                   // document.getElementById("links").classList.replace('visible', 'hidden');
 
-                  setTimeout(function () {
-                        document.getElementById('sound').classList.add('anchor');
-                        document.getElementById('sound').classList.replace('hidden', 'visible');
-                  }, 1000);
+                  // setTimeout(function () {
+                  //       document.getElementById('sound').classList.add('anchor');
+                  //       document.getElementById('sound').classList.replace('hidden', 'visible');
+                  // }, 1000);
 
                   //document.getElementById("start-button").classList.add('hidden');
                   let univ = new Universe(ctx);
