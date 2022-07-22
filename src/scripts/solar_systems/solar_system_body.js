@@ -92,7 +92,7 @@ export class SolarSystemBody {
                   size: this.radius,
                   color: JSON.parse(JSON.stringify(this.trail_color)),
                   vel: new_pos * (Math.random() * 4 + 1),//Util.scale(this.vel, -.1)
-                  shrink: (Math.random() * .03 + .02),
+                  shrink: (Math.random() * .03 + .01),
                   vel: new_pos
                   //spread: 5
             }));
@@ -162,7 +162,7 @@ export class SolarSystemBody {
                         size: this.radius * .75,
                         color: JSON.parse(JSON.stringify(this.trail_color)),
                         vel: new_pos,//Util.scale(this.vel, -.1),
-                        shrink: .03,
+                        shrink: (Math.random() * .01 + 0.015)
                         //spread: 5
                   }));
                   count++;

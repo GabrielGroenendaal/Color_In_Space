@@ -8,24 +8,39 @@
       <link rel="icon" type="image/x-icon"  href="./assets/sprites/favicon.ico">
       <link rel="stylesheet" href="./dist/main.css" />
       <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
+      <script src="https://kit.fontawesome.com/0ef5717b3c.js" crossorigin="anonymous"></script>
       <script src="./dist/keymaster.js"></script>
       <script src="./dist/main.js"></script>
       <title>Project Name</title>
 </head>
 <body>
-      <br>
+   
       <audio id="audiotag1" src="./assets/audio/start.mp3"  preload="auto"></audio>
       <div id="splash-page-container">
-            <div class="hidden" id="title">
-                  <h1>Colors in Space</h1>
+            <div id="title">
+                  <!-- <h1>Colors in Space</h1> -->
+                  <svg class="hidden" id="title-graphic" viewBox="0 0 1920 300">
+                        <symbol id="s-text">
+                          <text text-anchor="middle" x="50%" y="80%">COLORS  IN  SPACE</text>
+                          <!-- <text text-anchor="middle" x="52%" y="80%">COLORS  IN  SPACE</text> -->
+                          
+                        </symbol>
+                      
+                        <g class = "g-ants">
+                          <use xlink:href="#s-text" class="text-copy"></use>
+                          <use xlink:href="#s-text" class="text-copy"></use>
+                          <use xlink:href="#s-text" class="text-copy"></use>
+                          <use xlink:href="#s-text" class="text-copy"></use>
+                          <use xlink:href="#s-text" class="text-copy"></use>
+                        </g>
+                      </svg>
             </div>
     
       
             <div class="hidden" id="instructions">
-                  <p>Voyage through an endless expanse of color and good vibes</p>
+                  <p>Voyage through an endless expanse of color and good vibes, with no limits and no worries</p>
                   
-                  <p id="important"> Use the Arrow-Keys to Move</p>
+                  <p> Use the  <img id="arrows" src="./assets/sprites/noun-arrow-keys-302301.png">  keys to Move</p>
             </div>
 
             <div class="options">
@@ -34,13 +49,34 @@
                         <p>Start<p>
                   </div>
                   <!-- </div>onclick="document.getElementById('audiotag1').play() -->
-                  <button id="sound" class="hidden">
-                        <!-- Play Music -->
-                        <img src="./assets/sprites/icons8-classic-music-48.png" alt="">
-                        
-                  </button>
                   
             </div>
+   <div class="hidden" id="links">
+                 
+                     
+            <a href="https://gabrielgroenendaal.com/" rel="noopener noreferrer" target="_blank">
+              <i class="fas fa-user-circle fa-2x" aria-hidden="true"></i>
+            </a>
+      
+            <a href="https://github.com/GabrielGroenendaal" rel="noopener noreferrer" target="_blank">
+              <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+            </a>
+      
+            <a href="https://www.linkedin.com/in/victor-he/" rel="noopener noreferrer" target="_blank">
+              <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+            </a>
+        
+            <a href="https://angel.co/u/gabriel-groenendaal" rel="noopener noreferrer" target="_blank">
+              <i class="fab fa-angellist fa-2x" aria-hidden="true"></i>
+            </a>
+        
+                  
+</div>
+<button id="sound" class="hidden anchor">
+      <!-- Play Music -->
+      <i class="fa fa-music"></i>
+      
+</button>
             
       </div>
       

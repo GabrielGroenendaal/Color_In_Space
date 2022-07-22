@@ -49,7 +49,7 @@ export class Sun extends SolarSystemBody {
                         size: this.radius * .75,
                         color: JSON.parse(JSON.stringify(this.trail_color)),
                         vel: new_pos,//Util.scale(this.vel, -.1),
-                        shrink: .06,
+                        shrink: .05,
                         //spread: 5
                   }));
                   count++;

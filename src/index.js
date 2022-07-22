@@ -2,16 +2,17 @@
 import { Universe } from "./scripts/universe.js";
 import { Howl, Howler } from 'howler';
 window.count = 0;
-window.board_offset = 16;
+window.board_offset = 0;
 setInterval(function () { window.count++ }, 10);
 
 document.addEventListener("DOMContentLoaded", () => {
       //document.getElementById('splash-page-container').classList.replace('hidden', 'visible');
 
       document.getElementById('start-button').classList.replace('hidden', 'visible');
-      document.getElementById('title').classList.replace('hidden', 'visible');
+      document.getElementById('title-graphic').classList.replace('hidden', 'visible');
       document.getElementById('sound').classList.replace('hidden', 'visible');
       document.getElementById("instructions").classList.replace('hidden', 'visible');
+      document.getElementById("links").classList.replace('hidden', 'visible');
 
       const canvasEl = document.getElementById("game-canvas");
       canvasEl.width = window.innerWidth;
@@ -33,9 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
                   //document.getElementById("splash-page-container").classList.replace('visible', 'hidden');
 
                   document.getElementById("start-button").classList.replace('visible', 'hidden');
-                  document.getElementById("title").classList.replace('visible', 'hidden');
+                  document.getElementById("title-graphic").classList.replace('visible', 'hidden');
                   document.getElementById("sound").classList.replace('visible', 'hidden');
                   document.getElementById("instructions").classList.replace('visible', 'hidden');
+                  // document.getElementById("links").classList.replace('visible', 'hidden');
+
                   setTimeout(function () {
                         document.getElementById('sound').classList.add('anchor');
                         document.getElementById('sound').classList.replace('hidden', 'visible');

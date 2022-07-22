@@ -9,15 +9,52 @@
 }
 
 
-#start-button {
-    display: flex;
-    background: gray;
 
+
+
+#sound {
+    font-size: 1.5em;
+    height: auto;
+    width: 2%;
+    border: 2px solid white;
+    border-radius: 10px;
+    display: flex;
+    color: white;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    padding: 8px;
+   
+}
+
+#sound:hover {
+    border-color: rgb(225, 19, 236);
+    color: rgb(239, 45, 249);
+    transform: scale(1.1);
+    /* transition: transform .3s;
+    transition: color .4s; */
+    transition: all .4s;
+}
+
+
+.anchor {
+    position: fixed;
+    top: 2%;
+    right: 1%;
+}
+
+
+#start-button {
+    margin-top: 20px;
+    display: flex;
+    background: transparent;
     color: white;
     font-weight: bold;
     border-radius: 25px;
     border: 2px solid white;
-    font-size: 50px;
+    font-size: 3em;
+    font-family: 'Montserrat';
     width: 200px;
     height: 100px;
     text-align: center;
@@ -32,7 +69,16 @@
 }
 
 #start-button:hover {
-    background: rgb(91, 91, 91);
+    border-color: rgb(225, 19, 236);
+    font-weight: bold;
+    color: rgb(239, 45, 249);
+    transform: scale(1.1);
+    /* transition: transform .3s;
+    transition: color .4s; */
+
+
+      transition: all .4s;
+      
 }
 
 
@@ -56,8 +102,8 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    margin: 0px;
     
+    width: 100%;
 }
 
 
@@ -78,15 +124,114 @@
     margin-top: 0px;
 }
 
-#instructions > p {
+/* #instructions > p {
     margin: 10px;
-}
+} */
 
-#important {
+/* #important {
     font-weight: bold;
+} */
+
+
+#game-canvas, #splash-page-container {
+    margin: 0px;
+    padding: 0px;
 }
 
-#important:hover {
-    transform: scale(1.05);
-    color: powderblue
+
+#links {
+    display: flex;
+    flex-direction: row;
+    width: 10%;
+    
+    justify-content: space-between;
+    
+    position: fixed;
+    top: 2%;
+    left: 1%;
+}
+
+
+
+a {
+    color: white;
+    opacity: 60%;
+    padding: 8px;
+}
+
+a:hover {
+    transform: scale(1.1);
+    opacity: 100%; 
+}
+
+
+svg {
+    display: block;
+    font: 2.5em 'Montserrat';
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 5px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 8.25s infinite linear;
+}
+
+.text-copy:nth-child(1){
+  stroke: #1d164d;
+  animation-delay: -1.5;
+}
+
+.text-copy:nth-child(2){
+  stroke: #4f0084;
+  animation-delay: -3s;
+}
+
+.text-copy:nth-child(3){
+  stroke: #6b00bd;
+  animation-delay: -4.5s;
+}
+
+.text-copy:nth-child(4){
+  stroke: #2c00bd;
+  animation-delay: -6s;
+}
+
+.text-copy:nth-child(5){
+  stroke: #fd31db;
+  animation-delay: -7.5s;
+}
+
+@keyframes stroke-offset{
+  100% {stroke-dashoffset: -35%;}
+}
+
+
+#title {
+    transition: transform 1s;
+    margin-bottom: 1%;
+}
+#title:hover {
+    transform: scale(1.1);
+    transition: transform 1s;
+    
+}
+
+
+#instructions > p {
+    font-size: .5em;
+    font-family: 'Montserrat'
+}
+
+
+#arrows  {
+    width: 10%;
+    height: auto;
+    padding-right: 5px;
+    padding-left: 5px;
 }

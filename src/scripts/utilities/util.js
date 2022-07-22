@@ -135,6 +135,10 @@ export const Util = {
 
             return new_color
             
+      },
+
+      magnitude(vector) {
+            return (Math.sqrt(vector[0] * vector[0] + vector[1] + vector[1]))
       }
           
 }

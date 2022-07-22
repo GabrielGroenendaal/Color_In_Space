@@ -31,7 +31,7 @@ export class Comet extends SolarSystemBody {
 
 
             // Movement
-            this.drag = .992;
+            this.drag = .993;
             this.universe = options.universe;
             this.solar_system = options.solar_system;
             this.solar_system.add(this);
@@ -46,10 +46,20 @@ export class Comet extends SolarSystemBody {
       move() {
             this.pos = [this.pos[0] + (this.vel[0]), this.pos[1] + this.vel[1]];
             this.vel = [this.vel[0] * this.drag, this.vel[1] * this.drag];
-            //console.log(this.pos);
       }
 
       power(impulse) {
+            if ((impulse[0] > 0 && this.vel[0] < 0 || impulse[0] < 0 && this.vel[0] > 0) && Math.abs(this.vel[0] >= 1)) {
+                  impulse[0] *= Math.abs(this.vel[0]) / 2;
+            }
+            if ((impulse[1] > 0 && this.vel[1] < 0 || impulse[1] < 0 && this.vel[1] > 0) && Math.abs(this.vel[1] >= 1)) {
+                  impulse[1] *= Math.abs(this.vel[1]) / 2;
+            }
+
+            if (Util.magnitude(this.vel) < 15) {
+                  impulse[0] *= 1.5;
+                  impulse[1] *= 1.5;
+            }
             this.vel = [this.vel[0] + impulse[0], this.vel[1] + impulse[1]];
       }
 
@@ -68,6 +78,19 @@ export class Comet extends SolarSystemBody {
                   shrink: .03,
                   //spread: 5
             }));
+
+            // setTimeout(() => {
+            //       this.solar_system.add(new CometTrail({
+            //             pos: this.pos,
+            //             solar_system: this.solar_system,
+            //             size: 10,
+            //             color: JSON.parse(JSON.stringify(this.trail_color)),
+            //             //    vel: new_pos,//Util.scale(this.vel, -.1)
+            //             shrink: .03,
+            //             //spread: 5
+            //       }));
+            // }, 100);
+
 
 
             // new_angle = Util.randomAngle();
