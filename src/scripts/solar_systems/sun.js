@@ -1,7 +1,7 @@
 import { SolarSystemBody } from "./solar_system_body";
 import { Util } from "../utilities/util";
 import { Trail } from "./trail";
-
+import { SunExplosionTrail } from "./trail";
 export class Sun extends SolarSystemBody {
       constructor(options) {
             options.base_radius = options.base_radius || Util.randomSize(50, 80);
@@ -34,5 +34,26 @@ export class Sun extends SolarSystemBody {
                   //spread: 5
             }));
 
+      }
+
+      explode() {
+            let count = 0;
+            while (count < this.num_of_giblets) {
+                  let new_pos = [];
+                  let new_angle = Util.toRadians((360 / this.num_of_giblets) * count);
+                  new_pos[0] = Math.cos(new_angle) * this.radius / 8;
+                  new_pos[1] = Math.sin(new_angle) * this.radius / 8;
+                  this.solar_system.add(new SunExplosionTrail({
+                        pos: this.pos,
+                        solar_system: this.solar_system,
+                        size: this.radius * .75,
+                        color: JSON.parse(JSON.stringify(this.trail_color)),
+                        vel: new_pos,//Util.scale(this.vel, -.1),
+                        shrink: .06,
+                        //spread: 5
+                  }));
+                  count++;
+            }
+            //console.log(this.solar_system.checkTrail());
       }
 }

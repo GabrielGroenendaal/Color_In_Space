@@ -9,7 +9,7 @@ import { Trail } from "./trail";
 import { ExplosionTrail } from "./trail";
 import { Star } from "./star";
 import { CometTrail } from "./trail";
-
+import { SunExplosionTrail } from "./trail";
 export class SolarSystem {
 
       constructor(options) {
@@ -17,7 +17,7 @@ export class SolarSystem {
             this.height = options.height || window.innerHeight - window.board_offset ;
             this.width = options.width || window.innerWidth;
             this.num_planets = options.num_planets || 8;
-            this.num_suns = options.sun || 3;
+            this.num_suns = options.sun || 2;
             this.universe = options.universe;
             this.suns = [];
             this.comet = options.comet;
@@ -27,8 +27,9 @@ export class SolarSystem {
             this.trails = [];
             this.explosion_trails = [];
             this.comet_trails = [];
+            this.sun_explosion_trails = []
             this.addPlanets([.1,.25]);
-            setInterval(this.checkPlanets.bind(this), 10000);
+            setInterval(this.checkPlanets.bind(this), 7000);
       }
 
 
@@ -67,7 +68,7 @@ export class SolarSystem {
       }
 
       allGraphics() {
-            return [...this.trails, ...this.stars, ...this.explosion_trails, ...this.comet_trails]
+            return [...this.trails, ...this.stars, ...this.sun_explosion_trails, ...this.explosion_trails, ...this.comet_trails]
       }
 
       add(obj) {
@@ -77,7 +78,7 @@ export class SolarSystem {
             if (obj instanceof Sun) {
                   this.suns.push(obj);
             }
-            if (obj instanceof Trail && !(obj instanceof CometTrail) && !(obj instanceof ExplosionTrail)) {
+            if (obj instanceof Trail && !(obj instanceof CometTrail) && !(obj instanceof ExplosionTrail) && !(obj instanceof SunExplosionTrail)) {
                   this.trails.unshift(obj);
             }
             if (obj instanceof ExplosionTrail) {
@@ -85,6 +86,9 @@ export class SolarSystem {
             }
             if (obj instanceof CometTrail) {
                   this.comet_trails.unshift(obj)
+            }
+            if (obj instanceof SunExplosionTrail) {
+                  this.sun_explosion_trails.unshift(obj)
             }
             if (obj instanceof Star) {
                   this.stars.push(obj);
@@ -128,8 +132,26 @@ export class SolarSystem {
             for (let i = 0; i < all.length - 1; i++) {
                   for (let j = i + 1; j < all.length; j++) {
                         if (all[i].isCollidedWith(all[j])) {
+                              // let colors = Util.blendColor(all[i].trail_color, all[j].trail_color);
+                              // all[i].trail_color = colors[0];
+                              // all[j].trail_color = colors[1];
                               all[i].collideWith(all[j]);
                         };
+                  }
+            }
+      }
+
+      checkSunCollision() {
+            let planets = this.planets;
+            let sun = this.sun_explosion_trails;
+            for (let i = 0; i < sun.length; i++){
+                  for (let j = 0; j < planets.length; j++){
+                        if (sun[i].isCollidedWith(planets[j])) {
+                              // let colors = Util.blendColor(sun[i].color, planets[j].trail_color)
+                              // planets[j].trail_color = colors[1]
+
+                              this.remove(planets[j])
+                        }
                   }
             }
       }
@@ -138,6 +160,7 @@ export class SolarSystem {
       step() {
             this.moveObjects();
             this.checkCollision();
+            this.checkSunCollision();
       }
 
       remove(obj) {
@@ -148,9 +171,12 @@ export class SolarSystem {
                   obj.explode();
                   this.suns.splice(this.suns.indexOf(obj), 1);
             }
-            if (obj instanceof Trail && !(obj instanceof CometTrail) && !(obj instanceof ExplosionTrail)){
+            if (obj instanceof Trail && !(obj instanceof CometTrail) && !(obj instanceof ExplosionTrail) && !(obj instanceof SunExplosionTrail)){
                   //this.checkTrail();
                   this.trails.splice(this.trails.indexOf(obj), 1)
+            }
+            if (obj instanceof SunExplosionTrail) {
+                  this.sun_explosion_trails.splice(this.sun_explosion_trails.indexOf(obj), 1)
             }
             if (obj instanceof ExplosionTrail){
                   //this.checkTrail();

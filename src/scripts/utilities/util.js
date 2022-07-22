@@ -78,6 +78,32 @@ export const Util = {
       cameraY(comet) {
             let canvasEl = document.getElementById("game-canvas");
             return -(canvasEl.height / 2 - comet.pos[1]) + (comet.vel[1] * 15);
+      },
+
+      blendColor(color1, color2) {
+            let avg_r = (color1.r + color2.r) / 2.0;
+            let avg_b = (color1.b + color2.b) / 2.0;
+            let avg_g = (color1.g + color2.g) / 2.0;
+
+
+            let c = {
+                  r: color1.r + (avg_r / 10000), 
+                  b: color1.b + (avg_b / 10000),
+                  g: color1.g + (avg_g / 10000),
+                  alpha: color1.alpha
+            }
+            
+            let c2 = {
+                  r: color2.r + (avg_r / 10000), 
+                  b: color2.b + (avg_b / 10000),
+                  g: color2.g + (avg_g / 10000),
+                  alpha: color2.alpha
+            }
+            c = JSON.parse(JSON.stringify(c))
+            c2 = JSON.parse(JSON.stringify(c2))
+
+            return [c, c2]
+
       }
           
 }

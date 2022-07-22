@@ -30,10 +30,11 @@ export class Trail {
             ctx.fillStyle = Util.parseColor(this.color);
             ctx.beginPath();
 
+            let checkSize = (this.size > 0) ? this.size : .01
             ctx.arc(
                   this.pos[0] - Util.cameraX(comet),
                   this.pos[1] - Util.cameraY(comet),
-                  this.size,
+                  checkSize,
                   0,
                   2 * Math.PI,
                   false
@@ -115,6 +116,30 @@ export class ExplosionTrail extends Trail {
 export class CometTrail extends Trail {
       constructor(options) {
             super(options);
+      }
+}
+
+export class SunExplosionTrail extends Trail {
+      constructor(options) {
+            super(options);
+      }
+
+
+      isCollidedWith(otherObj) {
+            let pos1 = this.pos;
+            let pos2 = otherObj.pos;
+            let dist = Util.dist(this, otherObj);
+            let safe = this.size + otherObj.radius;
+            if (dist < safe) {
+                  return true;
+            } else {
+
+                  return false;
+            }
+      }
+
+      collideWith(otherObj) {
+            this.solar_system.remove(otherObj);
       }
 }
       // draw(ctx, comet) {
