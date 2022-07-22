@@ -40,9 +40,9 @@ export class Sun extends SolarSystemBody {
             let count = 0;
             while (count < this.num_of_giblets) {
                   let new_pos = [];
-                  let new_angle = Util.toRadians((360 / this.num_of_giblets) * count);
-                  new_pos[0] = Math.cos(new_angle) * this.radius / 8;
-                  new_pos[1] = Math.sin(new_angle) * this.radius / 8;
+                  let new_angle = Util.toRadians((360 / Math.random(0, this.num_of_giblets)) * count);
+                  new_pos[0] = Math.cos(new_angle) * this.radius / (Math.random() * 7 + 2);
+                  new_pos[1] = Math.sin(new_angle) * this.radius / (Math.random() * 7 + 2);
                   this.solar_system.add(new SunExplosionTrail({
                         pos: this.pos,
                         solar_system: this.solar_system,

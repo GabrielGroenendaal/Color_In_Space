@@ -29,7 +29,7 @@ export class SolarSystem {
             this.comet_trails = [];
             this.sun_explosion_trails = []
             this.addPlanets([.1,.25]);
-            setInterval(this.checkPlanets.bind(this), 7000);
+            setInterval(this.checkPlanets.bind(this), 10000);
       }
 
 
@@ -128,7 +128,7 @@ export class SolarSystem {
       }
 
       checkCollision() {
-            let all = this.allBodies();
+            let all = this.planets;
             for (let i = 0; i < all.length - 1; i++) {
                   for (let j = i + 1; j < all.length; j++) {
                         if (all[i].isCollidedWith(all[j])) {
@@ -141,6 +141,15 @@ export class SolarSystem {
             }
       }
 
+      checkCometCollision() {
+            let comet = this.comet;
+            let bodies = [...this.suns, ...this.planets]
+            for (let i = 0; i < bodies.length; i++){
+                  if (comet.isCollidedWith(bodies[i])) {
+                        comet.collideWith(bodies[i])
+                  }
+            }
+      }
       checkSunCollision() {
             let planets = this.planets;
             let sun = this.sun_explosion_trails;
@@ -160,7 +169,9 @@ export class SolarSystem {
       step() {
             this.moveObjects();
             this.checkCollision();
+            this.checkCometCollision()
             this.checkSunCollision();
+
       }
 
       remove(obj) {

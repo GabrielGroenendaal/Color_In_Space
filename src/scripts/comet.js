@@ -141,7 +141,7 @@ export class Comet extends SolarSystemBody {
                   otherObj.explode();
             }
             this.solar_system.remove(otherObj);
-            this.solar_system.remove(this);
+            // this.solar_system.remove(this);
       }
 
       bindKeyHandlers() {

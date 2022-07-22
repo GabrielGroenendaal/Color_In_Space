@@ -80,6 +80,7 @@ export class Universe {
                   ]
                   this.solar_system = this.generateSolarSystem(new_univ_pos);
                   this.solar_system.comet = this.comet;
+                  this.comet.solar_system = this.solar_system;
                   this.solar_system.trails = storage.trails;
                   this.solar_system.comet_trails = storage.comet_trails;
                   

@@ -104,6 +104,37 @@ export const Util = {
 
             return [c, c2]
 
+      },
+
+      tweakColor(color) {
+            let new_color = {
+                  r: color.r + (Math.random() * 10 * (Math.round(Math.random()) ? 1 : -1)),
+                  g: color.g + (Math.random() * 10 * (Math.round(Math.random()) ? 1 : -1)), 
+                  b: color.g + (Math.random() * 10 * (Math.round(Math.random()) ? 1 : -1)),
+                  alpha: color.alpha
+            }
+
+            if (new_color.r > 255) {
+                  new_color.r = 255
+            } 
+            if (new_color.r < 0) {
+                  new_color.r = 0
+            }
+            if (new_color.g > 255) {
+                  new_color.g = 255
+            } 
+            if (new_color.g < 0) {
+                  new_color.g = 0
+            }
+            if (new_color.b > 255) {
+                  new_color.b = 255
+            } 
+            if (new_color.b < 0) {
+                  new_color.b = 0
+            }
+
+            return new_color
+            
       }
           
 }
