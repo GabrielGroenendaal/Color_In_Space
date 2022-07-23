@@ -30,7 +30,8 @@ export class Universe {
                   a.comet.bindKeyHandlers();
                   a.checkComet();
                   //console.log(a.solar_system.planets);
-            }, 10)
+            }, 8)
+        
       }
 
       draw() {
@@ -83,6 +84,8 @@ export class Universe {
                   this.comet.solar_system = this.solar_system;
                   this.solar_system.trails = storage.trails;
                   this.solar_system.comet_trails = storage.comet_trails;
+                  this.solar_system.explosion_trails = storage.comet_trails;
+                  this.solar_system.sun_explosion_trails = storage.sun_explosion_trails;
                   
             }
       }

@@ -26,7 +26,7 @@ export class Comet extends SolarSystemBody {
             // Trail color logic
             this.trail_color = options.trail_color || Util.randomColor();
             this.altered_color = Util.get_random(this.color_changes);
-            this.variance = 1//Math.random() * .5 + .5;            //this.trail = new Trail();
+            this.variance = 2//Math.random() * .5 + .5;            //this.trail = new Trail();
             setInterval(this.set_adjusted_color.bind(this), 1000);
 
 
@@ -72,7 +72,7 @@ export class Comet extends SolarSystemBody {
             this.solar_system.add(new CometTrail({
                   pos: this.pos,
                   solar_system: this.solar_system,
-                  size: 10,
+                  size: ((this.radius * 2) / 3),
                   color: JSON.parse(JSON.stringify(this.trail_color)),
                   //    vel: new_pos,//Util.scale(this.vel, -.1)
                   shrink: .03,
@@ -163,6 +163,7 @@ export class Comet extends SolarSystemBody {
             if (otherObj instanceof Planet) {
                   otherObj.explode();
             }
+            this.radius = this.radius + .5;
             this.solar_system.remove(otherObj);
             // this.solar_system.remove(this);
       }
