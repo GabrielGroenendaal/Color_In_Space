@@ -27,10 +27,28 @@ export class Trail {
 
       
       draw(ctx, comet) {
+            let checkSize = (this.size > 0) ? this.size : .01
+
+            // if (Util.dist(this, comet) > Util.canvasEL() * .75) {
+                  
+            // } else {
+            //       ctx.fillStyle = Util.parseColor(this.color);
+            //       ctx.beginPath();
+      
+            //       ctx.arc(
+            //             this.pos[0] - Util.cameraX(comet),
+            //             this.pos[1] - Util.cameraY(comet),
+            //             checkSize,
+            //             0,
+            //             2 * Math.PI,
+            //             false
+            //       );
+      
+            //       ctx.fill();
+            // }
             ctx.fillStyle = Util.parseColor(this.color);
             ctx.beginPath();
 
-            let checkSize = (this.size > 0) ? this.size : .01
             ctx.arc(
                   this.pos[0] - Util.cameraX(comet),
                   this.pos[1] - Util.cameraY(comet),
@@ -41,6 +59,7 @@ export class Trail {
             );
 
             ctx.fill();
+            
             this.shrink_size();
       }
 

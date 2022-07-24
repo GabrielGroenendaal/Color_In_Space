@@ -16,8 +16,8 @@ export class SolarSystem {
             this.pos = options.pos || [0, 0];
             this.height = options.height || window.innerHeight - window.board_offset ;
             this.width = options.width || window.innerWidth;
-            this.num_planets = options.num_planets || 8;
-            this.num_suns = options.sun || 2;
+            this.num_planets = options.num_planets || 9;
+            this.num_suns = options.sun || 3;
             this.universe = options.universe;
             this.suns = [];
             this.comet = options.comet;

@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
       canvasEl.height = window.innerHeight - window.board_offset;
 
       const ctx = canvasEl.getContext("2d");
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, canvasEl.width, canvasEl.height);
+      // ctx.fillStyle = "black";
+      // ctx.fillRect(0, 0, canvasEl.width, canvasEl.height);
 
       var music = new Howl({
             src: ['./assets/audio/start.mp3']

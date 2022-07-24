@@ -13,7 +13,6 @@ export class Universe {
             this.solar_system = this.generateSolarSystem([0,0]);
             this.comet = new Comet({ universe: this, solar_system: this.solar_system });
             this.solar_system.comet = this.comet;
-            //this.camera = new Camera({ universe: this, comet: this.comet});
             this.trails = [];
             this.stars = [];
             this.gui = [];
@@ -30,7 +29,7 @@ export class Universe {
                   a.comet.bindKeyHandlers();
                   a.checkComet();
                   //console.log(a.solar_system.planets);
-            }, 8)
+            }, 10)
         
       }
 
@@ -38,8 +37,8 @@ export class Universe {
             //a.clearRect(this.comet.pos[0] - (window.innerWidth/2), this.comet.pos[1] - (window.innerHeight/2), window.innerWidth, window.innerHeight)
             let canvasEl = Util.canvasEL();
             this.el.clearRect(0, 0, canvasEl.width, canvasEl.height);
-            this.el.fillStyle = "black";
-            this.el.fillRect(0, 0,  canvasEl.width, canvasEl.height);
+            // this.el.fillStyle = "";
+            // this.el.fillRect(0, 0,  canvasEl.width, canvasEl.height);
             this.solar_system.draw(this.el);       
       }
 

@@ -129,7 +129,7 @@ export class Comet extends SolarSystemBody {
       adjust_color() {
             //console.log(this.trail_color);
             if (this.altered_color === "red_down") {
-                  if (this.trail_color.red > 30) {
+                  if (this.trail_color.red > 40) {
                         this.trail_color.red -= this.variance;
                   }
             } else if (this.altered_color === "red_up") {
@@ -137,7 +137,7 @@ export class Comet extends SolarSystemBody {
                         this.trail_color.red += this.variance;
                   }
             } else if (this.altered_color === "green_down") {
-                  if (this.trail_color.green > 30) {
+                  if (this.trail_color.green > 40) {
                         this.trail_color.green -= this.variance;
                   }
             } else if (this.altered_color === "green_up") {
@@ -145,7 +145,7 @@ export class Comet extends SolarSystemBody {
                         this.trail_color.green += this.variance;
                   }
             } else if (this.altered_color === "blue_down") {
-                  if (this.trail_color.blue > 30) {
+                  if (this.trail_color.blue > 40) {
                         this.trail_color.blue -= this.variance;
                   }
             } else if (this.altered_color === "blue_up") {
