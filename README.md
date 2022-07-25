@@ -1,11 +1,7 @@
 # Colors in Space 
-![Example](/PlanetoidPrototype/assets/ExampleGifs/final.gif)
-
 
 ### Background 
-An interactive visual and auditory experience where the user will controll a comet streaking across space, navigating the gravity and orbits of other celestial bodies while slowing growing and drawing more objects into its own orbit. Impacts will create showers of debris and asteroids that will react to the mass and gravity of surrounding bodies, including the player. 
-
-The intent of this isn't to provide a challenging or competitive game experience, but something relaxing and visually pleasing that feels as good as possible to the player. 'Game Feel' is the highest priority: the tactile quality of the movement and presentation. 
+An interactive visual and auditory experience where players control a comet streaking across space, colliding into planets in spectacular splashes of color and light, navigating the gravity and orbits of other celestial bodies while slowing growing and drawing more objects into its own orbit. The intent of this isn't to provide a challenging or competitive game experience, but something relaxing and visually pleasing with tactile appeal. 
 
 ***
 
@@ -22,21 +18,11 @@ In addition, this project will include:
 - An about modal describing the background and controls for the experience
 - A production README
 
-***
-
-### Wireframe
-![Wireframe](/PlanetoidPrototype/assets/ExampleGifs/Wireframe.png)
 
 ***
 
 ### Technologies, Libraries, and APIs
 As of now, the project only uses basic canvas functionality. But as the project grows in complexity, I'd like to take a look at libraries that simplify vector match for when I implement gravity motion, since the math for that can be quite complex. Paper.js showcased some visual applications that would be super cool to incorporate for more interesting kinetics. I'd also like to experiment with 3JS and see if I can incorporate it somehow into a more 2.5D visual experience. A stretch goal is the implementation of music input to alter the color gradients and kinetics of the game objects, which would also require a library to parse audio input for BPM, pitch, etc. 
-
-#### Main Considerations
-- [Paper.js](http://paperjs.org/about/)
-- [ThreeJS](https://threejs.org/)
-- [Victor.js](http://victorjs.org/)
-- [PixiJS](https://pixijs.com/)
 
 ***
 
