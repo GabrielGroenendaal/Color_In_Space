@@ -14,17 +14,17 @@ In Colors in Space, users will be able to:
 
 ***
 
-### Technologies, Libraries, and APIs
+## Technologies, Libraries, and APIs
 Colors in Space was built using Vanilla Javascript, HTML5, CSS3, and the Canvas API. 
 
 ***
 
-### Major Features and Code Highlights
-## Feature A
+## Major Features and Code Highlights
+### Feature A
 ```
   // Some code goes here
 ```
-## Feature B
+### Feature B
 ```
   // Some code goes here
 ```
