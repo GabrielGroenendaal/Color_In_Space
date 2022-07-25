@@ -22,14 +22,260 @@ In Colors in Space, users will be able to:
 
 ***
 
-## Major Features and Code Highlights
-### Feature A
+## Major Features and Code Highlights (Will keep 2-3 of these)
+### Trails
+To create the mesmerizing visual effects for the solar system bodies, I utilized a ```Trail``` object which is created every time the game update is performed and the canvas is drawn. Trails are just circles, but their size shrinks over time and their colors are determined by a shifting value held by the object they're trailing from. Their initial motion is a randomly generated vector, and they are drawn to the position of the player-controlled comet over time. There are a half dozen different subclasses of Trail to produce different visual effects with slight tweaks to these variables.
 ```
-  // Some code goes here
+export class Trail {
+
+      constructor(options) {
+            this.color = options.color;
+            this.size = options.size || 10; 
+            this.shrink = options.shrink || .02;
+            this.pos = options.pos;
+            this.vel = options.vel || [0,0];
+            this.solar_system = options.solar_system;
+            this.altered_color = Util.get_random(this.color_changes);
+            this.drag = options.drag || .995;
+            this.variance = Math.random();
+      }
+      
+      draw(ctx, comet) {
+            let checkSize = (this.size > 0) ? this.size : .01 // Prevents drawing a Trail with a negative radius
+
+            ctx.fillStyle = Util.parseColor(this.color);
+            ctx.beginPath();
+            ctx.arc(
+                  this.pos[0] - Util.cameraX(comet),
+                  this.pos[1] - Util.cameraY(comet),
+                  checkSize,
+                  0,
+                  2 * Math.PI,
+                  false
+            );
+            ctx.fill();
+            
+            this.shrink_size(); 
+      }
+
+      adjust() {
+            this.adjust_pos();
+            this.shrink_size();
+      }
+
+      // Shrinks the trail over time and deletes it from the collection of game objects once it is too small
+      shrink_size() {
+            this.size -= this.shrink;
+            if (this.size <= 0.01) {
+                  this.solar_system.remove(this);
+            }
+      }
+      // Basic movement
+      adjust_pos() {
+            this.pos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
+            this.vel = [this.vel[0] * this.drag, this.vel[1] * this.drag];
+            this.chaseComet()
+      }
+      
+      // Adjusts movement based on the position of the player-controlled comet
+      chaseComet() {
+            let comet = this.solar_system.comet.pos;
+            let diff_x = comet[0] - this.pos[0]
+            let diff_y = comet[1] - this.pos[1]
+            let distance = Util.dist(this.solar_system.comet, this);
+            distance *= 130;
+            this.vel = [
+                  this.vel[0] + (diff_x / distance),
+                  this.vel[1] + (diff_y / distance)
+            ]
+      }
+}
 ```
-### Feature B
+The ```SolarSystemBody``` class has two functions, ```addTrail()``` and ```explode()``` which generate different types of trails to produce the visuals of the game.
 ```
-  // Some code goes here
+export class SolarSystemBody {
+      // ...
+      num_of_giblets = 100;
+        
+      draw(ctx, comet) {
+            this.adjust_color();
+            this.adjustSize();
+            this.addTrail();
+      }
+
+      addTrail() {
+            let new_pos = [];
+            let new_angle = Util.randomAngle();
+            let v = Math.random() * 30 + 20;
+            new_pos[0] = Math.cos(new_angle) * this.radius /  v;
+            new_pos[1] = Math.sin(new_angle) * this.radius / v;
+
+            this.solar_system.add(new Trail({
+                  pos: this.pos,
+                  solar_system: this.solar_system,
+                  size: this.radius,
+                  color: JSON.parse(JSON.stringify(this.trail_color)),
+                  vel: new_pos * (Math.random() * 4 + 1),//Util.scale(this.vel, -.1)
+                  shrink: (Math.random() * .03 + .01),
+                  vel: new_pos
+                  //spread: 5
+            }));
+      }
+
+      explode() {
+            let count = 0;
+            while (count < this.num_of_giblets) {
+                  let new_pos = [];
+                  let new_angle = Util.toRadians((360 / Math.random(0, this.num_of_giblets)) * count);
+                  new_pos[0] = Math.cos(new_angle) * this.radius / (Math.random() * 8);
+                  new_pos[1] = Math.sin(new_angle) * this.radius / (Math.random() * 8);
+                  this.solar_system.add(new ExplosionTrail({
+                        pos: this.pos,
+                        solar_system: this.solar_system,
+                        size: this.radius * .75,
+                        color: JSON.parse(JSON.stringify(this.trail_color)),
+                        vel: new_pos,//Util.scale(this.vel, -.1),
+                        shrink: (Math.random() * .01 + 0.015)
+                        //spread: 5
+                  }));
+                  count++;
+            }
+      }
+}
+
+```
+### Color Shifting
+The gradient-style color transitions of the main game objects and their trails is produced by having each trail and game object store their ```color``` and their ```trail_color``` as an object. A myriad of utility functions were scripted in order to manipulate and change these colors. Every object that produces Trails has a has a ```color_changes``` const variable, which determines the rate of change of their color's RGB values. This variable is randomly rerolled every half second.
+```
+export class SolarSystemBody {
+      color_changes = [
+            'red_down',
+            'red_up',
+            'green_down',
+            'green_up',
+            'blue_down',
+            'blue_up'
+      ]
+
+      constructor(options) {
+            // ...
+            this.color = options.color || Util.randomColor();
+            this.trail_color = options.trail_color || Util.randomColor();
+            this.altered_color = Util.get_random(this.color_changes);
+            this.variance = Math.random() * .5 + .5;      
+            setInterval(this.set_adjusted_color.bind(this), 500);
+      }
+
+      set_adjusted_color() {
+            let old = this.altered_color;
+            while (this.altered_color === old) {
+                  this.altered_color = Util.get_random(this.color_changes);
+            }
+      }
+
+      adjust_color() {
+            if (this.altered_color === "red_down") {
+                  if (this.trail_color.red > 30) {
+                        this.trail_color.red -= this.variance;
+                  }
+            } else if (this.altered_color === "red_up") {
+                  if (this.trail_color.red < 255) {
+                        this.trail_color.red += this.variance;
+                  }
+            } else if (this.altered_color === "green_down") {
+                  if (this.trail_color.green > 30) {
+                        this.trail_color.green -= this.variance;
+                  }
+            } else if (this.altered_color === "green_up") {
+                  if (this.trail_color.green < 255) {
+                        this.trail_color.green += this.variance;
+                  }
+            } else if (this.altered_color === "blue_down") {
+                  if (this.trail_color.blue > 30) {
+                        this.trail_color.blue -= this.variance;
+                  }
+            } else if (this.altered_color === "blue_up") {
+                  if (this.trail_color.blue < 255) {
+                        this.trail_color.blue += this.variance;
+                  }
+            }
+      }
+}
+```
+### Procedural Generation
+As the player can travel through unbounded endless space, code was necessary in order to detect when the player-controlled ```Comet``` is out of the ```SolarSystem``` object, which acts a collection for all the game objects, and manage creating new game objects and deleting the old ones. To accomplish this, a larger ```Universe``` class was created which stores the ```Comet``` and ```SolarSystem```
+```
+export class Universe {
+
+      constructor(el) {
+            this.el = el;
+            this.solar_system = this.generateSolarSystem([0,0]);
+            this.comet = new Comet({ universe: this, solar_system: this.solar_system });
+            this.solar_system.comet = this.comet;
+            this.trails = [];
+            this.stars = [];
+            this.gui = [];
+            this.start();
+      }
+
+      generateSolarSystem(start) {
+            let canvasEl = Util.canvasEL();
+            return new SolarSystem({
+                  universe: this.universe,
+                  pos: start,
+                  height: canvasEl.height * 2,
+                  width: canvasEl.width * 2,
+                  num_planets: (Math.random() * 5 + 15),
+                  num_suns: (Math.random() * 5 + 5)
+            });
+      }
+
+      start() {
+            let a = this;
+            setInterval(function () {  
+                  a.solar_system.step();
+                  a.draw();
+                  a.comet.bindKeyHandlers();
+                  a.checkComet();
+            }, 10)
+        
+      }
+
+      draw() {
+            let canvasEl = Util.canvasEL();
+            this.el.clearRect(0, 0, canvasEl.width, canvasEl.height);
+            this.solar_system.draw(this.el);       
+      }
+      
+      // Checks to see whether the Comet is within the bounds of the SolarSystem, then generates a new one in the direction the Comet is moving if not.
+      checkComet() {
+            let valid_x = [
+                  this.solar_system.pos[0] - (this.solar_system.width * .3),
+                  this.solar_system.pos[0] + (this.solar_system.width * 1.3)
+            ]
+            let valid_y = [
+                  this.solar_system.pos[1] - (this.solar_system.height * .3),
+                  this.solar_system.pos[1] + (this.solar_system.height * 1.3)
+            ]
+            if (this.comet.pos[0] > valid_x[1]|| this.comet.pos[0] < valid_x[0]|| this.comet.pos[1] > valid_y[1] || this.comet.pos[1] < valid_y[0]) {
+                  let storage = this.solar_system;
+                  let new_univ_pos = [
+                        this.comet.pos[0] - window.innerWidth / 2 + (this.comet.vel[0] * 100),
+                        this.comet.pos[1] - window.innerHeight / 2 + (this.comet.vel[1] * 100)
+                  ]
+                  this.solar_system = this.generateSolarSystem(new_univ_pos);
+                  this.solar_system.comet = this.comet;
+                  this.comet.solar_system = this.solar_system;
+
+                  // Transfers all the Trail objects to prevent clipping of visuals
+                  this.solar_system.trails = storage.trails;
+                  this.solar_system.comet_trails = storage.comet_trails;
+                  this.solar_system.explosion_trails = storage.comet_trails;
+                  this.solar_system.sun_explosion_trails = storage.sun_explosion_trails;
+                  
+            }
+      }
+}
 ```
 ***
 
