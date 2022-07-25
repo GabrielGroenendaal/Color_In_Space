@@ -35,14 +35,11 @@ export class Trail {
             this.pos = options.pos;
             this.vel = options.vel || [0,0];
             this.solar_system = options.solar_system;
-            this.altered_color = Util.get_random(this.color_changes);
             this.drag = options.drag || .995;
-            this.variance = Math.random();
       }
       
       draw(ctx, comet) {
             let checkSize = (this.size > 0) ? this.size : .01 // Prevents drawing a Trail with a negative radius
-
             ctx.fillStyle = Util.parseColor(this.color);
             ctx.beginPath();
             ctx.arc(
@@ -54,7 +51,6 @@ export class Trail {
                   false
             );
             ctx.fill();
-            
             this.shrink_size(); 
       }
 
@@ -96,7 +92,8 @@ The ```SolarSystemBody``` class has two functions, ```addTrail()``` and ```explo
 export class SolarSystemBody {
       // ...
       num_of_giblets = 100;
-        
+      
+      // Called every "step" of the game to render the Canvas objects
       draw(ctx, comet) {
             this.adjust_color();
             this.adjustSize();
@@ -118,7 +115,6 @@ export class SolarSystemBody {
                   vel: new_pos * (Math.random() * 4 + 1),//Util.scale(this.vel, -.1)
                   shrink: (Math.random() * .03 + .01),
                   vel: new_pos
-                  //spread: 5
             }));
       }
 
@@ -136,7 +132,6 @@ export class SolarSystemBody {
                         color: JSON.parse(JSON.stringify(this.trail_color)),
                         vel: new_pos,//Util.scale(this.vel, -.1),
                         shrink: (Math.random() * .01 + 0.015)
-                        //spread: 5
                   }));
                   count++;
             }
