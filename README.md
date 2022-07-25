@@ -225,20 +225,14 @@ export class Universe {
       start() {
             let a = this;
             setInterval(function () {  
-                  a.solar_system.step();
-                  a.draw();
-                  a.comet.bindKeyHandlers();
+                  a.solar_system.step();          // handles movement, collision, and other logic before drawing
+                  a.draw();                       // Draws everything to the Canvas
+                  a.comet.bindKeyHandlers();      // handles player input
                   a.checkComet();
             }, 10)
         
       }
 
-      draw() {
-            let canvasEl = Util.canvasEL();
-            this.el.clearRect(0, 0, canvasEl.width, canvasEl.height);
-            this.solar_system.draw(this.el);       
-      }
-      
       // Checks to see whether the Comet is within the bounds of the SolarSystem, then generates a new one in the direction the Comet is moving if not.
       checkComet() {
             let valid_x = [
