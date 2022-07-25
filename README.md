@@ -20,7 +20,14 @@ Colors in Space was built using Vanilla Javascript, HTML5, CSS3, and the Canvas 
 ***
 
 ### Major Features and Code Highlights
-
+## Feature A
+```
+  // Some code goes here
+```
+## Feature B
+```
+  // Some code goes here
+```
 ***
 
 <!-- ### Implementation Timeline
