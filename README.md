@@ -37,7 +37,8 @@ export class Trail {
             this.solar_system = options.solar_system;
             this.drag = options.drag || .995;
       }
-      
+
+      // Called every frame
       draw(ctx, comet) {
             let checkSize = (this.size > 0) ? this.size : .01 // Prevents drawing a Trail with a negative radius
             ctx.fillStyle = Util.parseColor(this.color);
@@ -51,10 +52,6 @@ export class Trail {
                   false
             );
             ctx.fill();
-            this.shrink_size(); 
-      }
-
-      adjust() {
             this.adjust_pos();
             this.shrink_size();
       }
