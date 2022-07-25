@@ -4,13 +4,13 @@
 ### Background
 **Colors in Space** is interactive visual and auditory experience where players control a comet streaking across space, colliding into planets in spectacular splashes of color and light, navigating the gravity and orbits of other celestial bodies while slowing growing and drawing more objects into its own orbit. The intent of this isn't to provide a challenging or competitive game experience, but something relaxing and visually pleasing with tactile appeal. 
 
-***
+<!-- ***
 
 ### Functionality and MVPs
 In Colors in Space, users will be able to:
 - Use cursor input to move around a 'Comet', with fine control of velocity
 - Navigate a randomly generated and limitless space filled with celestial bodies
-- Interact with other celestial bodies using the Comet they control, colliding into them and drawing particles into your orbit.
+- Interact with other celestial bodies using the Comet they control, colliding into them and drawing particles into your orbit. -->
 
 ***
 
@@ -19,11 +19,11 @@ Colors in Space was built using Vanilla Javascript, HTML5, CSS3, and the Canvas 
 
 ***
 
-### Code Highlights
+### Major Features and Code Highlights
 
 ***
 
-### Implementation Timeline
+<!-- ### Implementation Timeline
 My overall goals for the project involve the implementation of the following features
 - Responsive and enjoyable movement based on cursor position input 
 - A dynamic camera that drags behind the player based on the Comet velocity for optimal game feel
@@ -47,4 +47,4 @@ A stretch goal is implementing audio input (via video links or uploads) where so
 
 In addition, due to the nature of this project it will be possible to scale the visual spectacle up with more time.
 
-One other idea is to make it a full page application where the 'camera' view is as large as the browser window.
+One other idea is to make it a full page application where the 'camera' view is as large as the browser window. -->
