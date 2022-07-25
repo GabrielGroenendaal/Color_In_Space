@@ -1,5 +1,5 @@
 # Colors in Space 
-## [Live Link](https://gabrielgroenendaal.github.io/Color_In_Space/)
+### [Live Link](https://gabrielgroenendaal.github.io/Color_In_Space/)
 ![](https://i.imgur.com/ii27QCQ.gif)
 ### Background
 **Colors in Space** is interactive visual and auditory experience where players control a comet streaking across space, colliding into planets in spectacular splashes of color and light, navigating the gravity and orbits of other celestial bodies while slowing growing and drawing more objects into its own orbit. The intent of this isn't to provide a challenging or competitive game experience, but something relaxing and visually pleasing with tactile appeal. 
@@ -18,7 +18,7 @@ In Colors in Space, users will be able to:
 - Vanilla Javascript
 - HTML5
 - CSS
-- Canvas API. 
+- Canvas API
 
 ***
 
