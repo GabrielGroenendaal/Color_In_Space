@@ -1,4 +1,5 @@
 # Colors in Space 
+## [Live Link](https://gabrielgroenendaal.github.io/Color_In_Space/)
 ![](https://i.imgur.com/ii27QCQ.gif)
 ### Background 
 An interactive visual and auditory experience where players control a comet streaking across space, colliding into planets in spectacular splashes of color and light, navigating the gravity and orbits of other celestial bodies while slowing growing and drawing more objects into its own orbit. The intent of this isn't to provide a challenging or competitive game experience, but something relaxing and visually pleasing with tactile appeal. 
@@ -8,21 +9,17 @@ An interactive visual and auditory experience where players control a comet stre
 ### Functionality and MVPs
 In Colors in Space, users will be able to:
 - Use cursor input to move around a 'Comet', with fine control of velocity
-- Navigate a randomly generated and limitless space filled with celestial bodies. They will be able to pause and reset the field 
-- Intereact with other celestial bodies using the Comet they controlled
-    * **Gravitational Pull**: Celestial bodies will exert forces based on mass. The player comet will also draw objects into its orbit, and gain mass as it grows 
-    * **Impacts**: On impacts, Celestial bodies will react in a visually satisfying manner
-    * **Destruction**: Comets can destroy planetoids, growing in mass and creating visual spectacles and showers of smaller asteroids which will be subject to gravitational forces 
-
-In addition, this project will include: 
-- An about modal describing the background and controls for the experience
-- A production README
-
+- Navigate a randomly generated and limitless space filled with celestial bodies
+- Interact with other celestial bodies using the Comet they control, colliding into them and drawing particles into your orbit.
 
 ***
 
 ### Technologies, Libraries, and APIs
-As of now, the project only uses basic canvas functionality. But as the project grows in complexity, I'd like to take a look at libraries that simplify vector match for when I implement gravity motion, since the math for that can be quite complex. Paper.js showcased some visual applications that would be super cool to incorporate for more interesting kinetics. I'd also like to experiment with 3JS and see if I can incorporate it somehow into a more 2.5D visual experience. A stretch goal is the implementation of music input to alter the color gradients and kinetics of the game objects, which would also require a library to parse audio input for BPM, pitch, etc. 
+Colors in Space was built using Vanilla Javascript, HTML5, CSS3, and the Canvas API. 
+
+***
+
+### Code Highlights
 
 ***
 
