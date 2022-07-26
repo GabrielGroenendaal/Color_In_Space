@@ -1,6 +1,6 @@
 # Colors in Space 
 ### [Live Link](https://gabrielgroenendaal.github.io/Color_In_Space/)
-![](https://i.imgur.com/ii27QCQ.gif)
+![Colors in Space](https://i.imgur.com/ii27QCQ.gif)
 
 **Colors in Space** is interactive visual and auditory experience where players control a comet streaking across space, colliding into planets in spectacular splashes of color and light, navigating the gravity and orbits of other celestial bodies while slowing growing and drawing more objects into its own orbit. The intent of this isn't to provide a challenging or competitive game experience, but something relaxing and visually pleasing with tactile appeal. 
 
@@ -22,7 +22,7 @@ In Colors in Space, users will be able to:
 
 ***
 
-## Major Features and Code Highlights (Will keep 2-3 of these)
+## Major Features and Code Highlights
 ### Trails
 To create the mesmerizing visual effects for the solar system bodies, I utilized a ```Trail``` object which is created every time the game update is performed and the canvas is drawn. Trails are just circles, but their size shrinks over time and their colors are determined by a shifting value held by the object they're trailing from. Their initial motion is a randomly generated vector, and they are drawn to the position of the player-controlled comet over time. There are a half dozen different subclasses of Trail to produce different visual effects with slight tweaks to these variables.
 ```
@@ -86,9 +86,9 @@ export class Trail {
 }
 
 ```
-![2022-07-26 10-17-03 (online-video-cutter com)](https://user-images.githubusercontent.com/36039557/181029087-0f0a5d3d-156e-4949-83f7-60b739885983.gif)
+![Trails on Planets](https://user-images.githubusercontent.com/36039557/181029087-0f0a5d3d-156e-4949-83f7-60b739885983.gif)
 
-The ```SolarSystemBody``` class has two functions, ```addTrail()``` and ```explode()``` which generate different types of trails to produce the visuals of the game.
+The ```SolarSystemBody``` class has two functions, ```addTrail()``` and ```explode()``` which generate different types of trails to produce the visuals of the game. Subclasses of ```SolarSystemBody``` include ```Comet```, ```Sun```, and ```Planet```.
 ```
 export class SolarSystemBody {
       // Number of Trails created on Explosion
@@ -141,7 +141,7 @@ export class SolarSystemBody {
 }
 
 ```
-![2022-07-26 10-24-43 (online-video-cutter com)](https://user-images.githubusercontent.com/36039557/181034229-21d8e901-081c-4220-a6ad-66898c19a3b5.gif)
+![Color Shifting](https://user-images.githubusercontent.com/36039557/181034229-21d8e901-081c-4220-a6ad-66898c19a3b5.gif)
 ### Color Shifting
 The gradient-style color transitions of the main game objects and their trails is produced by having each trail and game object store their ```color``` and their ```trail_color``` as an object. A myriad of utility functions were scripted in order to manipulate and change these colors. Every object that produces Trails has a has a ```color_changes``` const variable, which determines the rate of change of their color's RGB values. This variable is randomly rerolled every half second.
 ```
