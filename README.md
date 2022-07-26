@@ -276,6 +276,11 @@ export class Universe {
 ```
 ***
 
+### Acknowledgments
+The author would like to acknowledge that the following were invaluable to understanding and using the concepts that made COlors in Space possible:
+
+* Gabe Cuzzillo, my teacher for Action Games Studio who taught me loads about making satisfying visuals and responsive gameplay for 2D action games.
+* All music is from Celeste and was used for educational purposes 
 <!-- ### Implementation Timeline
 My overall goals for the project involve the implementation of the following features
 - Responsive and enjoyable movement based on cursor position input 
