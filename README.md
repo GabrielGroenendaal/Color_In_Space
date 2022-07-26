@@ -27,7 +27,7 @@ In Colors in Space, users will be able to:
 ## Major Features and Code Highlights
 ### Trails
 To create the mesmerizing visual effects for the solar system bodies, I utilized a ```Trail``` object which is created every time the game update is performed and the canvas is drawn. Trails are just circles, but their size shrinks over time and their colors are determined by a shifting value held by the object they're trailing from. Their initial motion is a randomly generated vector, and they are drawn to the position of the player-controlled comet over time. There are a half dozen different subclasses of Trail to produce different visual effects with slight tweaks to these variables.
-```
+```.js
 export class Trail {
 
       constructor(options) {
@@ -91,7 +91,7 @@ export class Trail {
 ![Trails on Planets](https://user-images.githubusercontent.com/36039557/181029087-0f0a5d3d-156e-4949-83f7-60b739885983.gif)
 
 The ```SolarSystemBody``` class has two functions, ```addTrail()``` and ```explode()``` which generate different types of trails to produce the visuals of the game. Subclasses of ```SolarSystemBody``` include ```Comet```, ```Sun```, and ```Planet```.
-```
+```.js
 export class SolarSystemBody {
       // Number of Trails created on Explosion
       num_of_giblets = 100;
@@ -149,7 +149,7 @@ export class SolarSystemBody {
 ![Color Shifting](https://user-images.githubusercontent.com/36039557/181034229-21d8e901-081c-4220-a6ad-66898c19a3b5.gif)
 
 The gradient-style color transitions of the main game objects and their trails is produced by having each trail and game object store their ```color``` and their ```trail_color``` as an object. A myriad of utility functions were scripted in order to manipulate and change these colors. Every object that produces Trails has a has a ```color_changes``` const variable, which determines the rate of change of their color's RGB values. This variable is randomly rerolled every half second.
-```
+```.js
 export class SolarSystemBody {
       color_changes = [
             'red_down',
@@ -211,8 +211,9 @@ export class SolarSystemBody {
 
 ### Procedural Generation
 ![2022-07-26 10-23-10 (online-video-cutter com) (1)](https://user-images.githubusercontent.com/36039557/181033479-fe008edc-d1ed-4a64-9809-784b9cadd1f8.gif)
+
 As the player can travel through unbounded endless space, code was necessary in order to detect when the player-controlled ```Comet``` is out of the ```SolarSystem``` object, which acts a collection for all the game objects, and manage creating new game objects and deleting the old ones. To accomplish this, a larger ```Universe``` class was created which stores the ```Comet``` and ```SolarSystem```
-```
+```.js
 export class Universe {
 
       constructor(el) {
