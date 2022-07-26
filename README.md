@@ -242,7 +242,8 @@ export class Universe {
         
       }
 
-      // Checks to see whether the Comet is within the bounds of the SolarSystem, then generates a new one in the direction the Comet is moving if not.
+      // Checks to see whether the Comet is within the bounds of the SolarSystem, 
+      // then generates a new one in the direction the Comet is moving
       checkComet() {
             let valid_x = [
                   this.solar_system.pos[0] - (this.solar_system.width * .3),
@@ -252,7 +253,8 @@ export class Universe {
                   this.solar_system.pos[1] - (this.solar_system.height * .3),
                   this.solar_system.pos[1] + (this.solar_system.height * 1.3)
             ]
-            if (this.comet.pos[0] > valid_x[1]|| this.comet.pos[0] < valid_x[0]|| this.comet.pos[1] > valid_y[1] || this.comet.pos[1] < valid_y[0]) {
+            if ( this.comet.pos[0] > valid_x[1] || this.comet.pos[0] < valid_x[0]
+                || this.comet.pos[1] > valid_y[1] || this.comet.pos[1] < valid_y[0]) {
                   let storage = this.solar_system;
                   let new_univ_pos = [
                         this.comet.pos[0] - window.innerWidth / 2 + (this.comet.vel[0] * 100),
