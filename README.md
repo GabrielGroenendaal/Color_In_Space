@@ -1,8 +1,8 @@
 # Colors in Space
-### [Live Link](https://gabrielgroenendaal.github.io/Color_In_Space/)
+### <a href="https://gabrielgroenendaal.github.io/Color_In_Space/" target="_blank">Live Link</a>
 ![Colors in Space](https://user-images.githubusercontent.com/36039557/181049580-a26accbd-fe48-4801-b051-724fa117194b.gif)
 
-**Colors in Space** is interactive visual and auditory experience where players explore a vast, expanding universe filled with color and good vibes. Players controll a comet streaking across space, colliding into planets in spectacular splashes of color and light, navigating the gravity and orbits of other celestial bodies while slowing growing and drawing more objects into its own orbit. 
+<a href="https://gabrielgroenendaal.github.io/Color_In_Space/" target="_blank">**Colors in Space**</a> is interactive visual and auditory experience where players explore a vast, endless, procedurally-generated universe filled with color and good vibes. Players control a comet streaking across space, colliding into planets in spectacular splashes of color and light, navigating the gravity and orbits of other celestial bodies while slowing growing and drawing more objects into its own orbit. 
 
 The goal of this project was to produce a meditative but viscerally satisfying interactive experience.  The intent of this isn't to provide a challenging or competitive game experience, but something relaxing and visually pleasing with tactile appeal.  I also wanted to experiment with procedurally generated graphics and push the limits of the Canvas API.
 
