@@ -277,7 +277,7 @@ export class Universe {
 ***
 
 ### Acknowledgments
-The author would like to acknowledge that the following were invaluable to understanding and using the concepts that made COlors in Space possible:
+I would like to acknowledge that the following were invaluable to understanding and using the concepts that made **Colors in Space** possible:
 
 * Gabe Cuzzillo, my teacher for Action Games Studio who taught me loads about making satisfying visuals and responsive gameplay for 2D action games.
 * All music is from Celeste and was used for educational purposes 
