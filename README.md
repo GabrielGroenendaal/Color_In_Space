@@ -1,6 +1,5 @@
-# Colors in Space 
-### [Live Link](https://gabrielgroenendaal.github.io/Color_In_Space/)
-![Colors in Space](https://i.imgur.com/ii27QCQ.gif)
+# Colors in Space [(Live)](https://gabrielgroenendaal.github.io/Color_In_Space/)
+![Colors in Space](https://user-images.githubusercontent.com/36039557/181049580-a26accbd-fe48-4801-b051-724fa117194b.gif)
 
 **Colors in Space** is interactive visual and auditory experience where players control a comet streaking across space, colliding into planets in spectacular splashes of color and light, navigating the gravity and orbits of other celestial bodies while slowing growing and drawing more objects into its own orbit. The intent of this isn't to provide a challenging or competitive game experience, but something relaxing and visually pleasing with tactile appeal. 
 
@@ -141,8 +140,11 @@ export class SolarSystemBody {
 }
 
 ```
-![Color Shifting](https://user-images.githubusercontent.com/36039557/181034229-21d8e901-081c-4220-a6ad-66898c19a3b5.gif)
+***
+
 ### Color Shifting
+![Color Shifting](https://user-images.githubusercontent.com/36039557/181034229-21d8e901-081c-4220-a6ad-66898c19a3b5.gif)
+
 The gradient-style color transitions of the main game objects and their trails is produced by having each trail and game object store their ```color``` and their ```trail_color``` as an object. A myriad of utility functions were scripted in order to manipulate and change these colors. Every object that produces Trails has a has a ```color_changes``` const variable, which determines the rate of change of their color's RGB values. This variable is randomly rerolled every half second.
 ```
 export class SolarSystemBody {
@@ -202,8 +204,10 @@ export class SolarSystemBody {
       }
 }
 ```
-![2022-07-26 10-23-10 (online-video-cutter com) (1)](https://user-images.githubusercontent.com/36039557/181033479-fe008edc-d1ed-4a64-9809-784b9cadd1f8.gif)
+***
+
 ### Procedural Generation
+![2022-07-26 10-23-10 (online-video-cutter com) (1)](https://user-images.githubusercontent.com/36039557/181033479-fe008edc-d1ed-4a64-9809-784b9cadd1f8.gif)
 As the player can travel through unbounded endless space, code was necessary in order to detect when the player-controlled ```Comet``` is out of the ```SolarSystem``` object, which acts a collection for all the game objects, and manage creating new game objects and deleting the old ones. To accomplish this, a larger ```Universe``` class was created which stores the ```Comet``` and ```SolarSystem```
 ```
 export class Universe {
