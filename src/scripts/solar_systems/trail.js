@@ -21,34 +21,14 @@ export class Trail {
             this.altered_color = Util.get_random(this.color_changes);
             this.drag = options.drag || .995;
             this.variance = Math.random();
-            //this.spread = options.spread || 0;
-            //setInterval(this.set_adjusted_color(), 4000);
       }
 
       
       draw(ctx, comet) {
             let checkSize = (this.size > 0) ? this.size : .01
 
-            // if (Util.dist(this, comet) > Util.canvasEL() * .75) {
-                  
-            // } else {
-            //       ctx.fillStyle = Util.parseColor(this.color);
-            //       ctx.beginPath();
-      
-            //       ctx.arc(
-            //             this.pos[0] - Util.cameraX(comet),
-            //             this.pos[1] - Util.cameraY(comet),
-            //             checkSize,
-            //             0,
-            //             2 * Math.PI,
-            //             false
-            //       );
-      
-            //       ctx.fill();
-            // }
             ctx.fillStyle = Util.parseColor(this.color);
             ctx.beginPath();
-
             ctx.arc(
                   this.pos[0] - Util.cameraX(comet),
                   this.pos[1] - Util.cameraY(comet),
@@ -57,33 +37,27 @@ export class Trail {
                   2 * Math.PI,
                   false
             );
-
             ctx.fill();
             
             this.shrink_size();
       }
 
       adjust() {
-            //    this.adjust_color();
             this.adjust_pos();
             this.shrink_size();
       }
 
       shrink_size() {
             this.size -= this.shrink;
-            //this.color.alpha -= .1;
             if (this.size <= 0.01) {
-            //if (this.color.alpha <= 0){
                   this.solar_system.remove(this);
             }
       }
 
       adjust_pos() {
-            //this.pos = [this.pos[0] + Math.random() * Math.sin(window.count), this.pos[1] + Math.random() * Math.sin(window.count)];
             this.pos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
             this.vel = [this.vel[0] * this.drag, this.vel[1] * this.drag];
             this.chaseComet()
-            //this.pos = Util.scale(this.pos, this.drag);
       }
 
       chaseComet() {
@@ -96,7 +70,6 @@ export class Trail {
                   this.vel[0] + (diff_x / distance),
                   this.vel[1] + (diff_y / distance)
             ]
-            // console.log(comet)
       }
 
 }

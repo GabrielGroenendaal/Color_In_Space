@@ -26,7 +26,7 @@ export class SolarSystemBody {
             this.solar_system = options.solar_system;
             //this.comet = options.comet;
             this.color_v = options.color_v;
-            this.variance = Math.random;
+            //this.variance = Math.random;
 
                         // Trail color logic
                         this.trail_color = options.trail_color || Util.randomColor();

@@ -7,7 +7,6 @@ import { Util } from "./utilities/util";
 
 export class Universe {
 
-
       constructor(el) {
             this.el = el;
             this.solar_system = this.generateSolarSystem([0,0]);
@@ -16,9 +15,7 @@ export class Universe {
             this.trails = [];
             this.stars = [];
             this.gui = [];
-            
             this.start();
-
       }
 
       start() {
@@ -28,28 +25,15 @@ export class Universe {
                   a.draw();
                   a.comet.bindKeyHandlers();
                   a.checkComet();
-                  //console.log(a.solar_system.planets);
             }, 10)
         
       }
 
       draw() {
-            //a.clearRect(this.comet.pos[0] - (window.innerWidth/2), this.comet.pos[1] - (window.innerHeight/2), window.innerWidth, window.innerHeight)
             let canvasEl = Util.canvasEL();
             this.el.clearRect(0, 0, canvasEl.width, canvasEl.height);
-            // this.el.fillStyle = "";
-            // this.el.fillRect(0, 0,  canvasEl.width, canvasEl.height);
             this.solar_system.draw(this.el);       
       }
-
-      move() {
-            
-      }
-
-      remove(obj) {
-            
-      }
-
 
       generateSolarSystem(start) {
             let canvasEl = Util.canvasEL();
